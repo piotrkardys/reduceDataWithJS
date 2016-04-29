@@ -1,0 +1,2 @@
+﻿"REDUCE DATA WITH JAVASCRIPT ARRAY#REDUCE" 
+"29.04.2016 - 16:25 - start of the project" 
