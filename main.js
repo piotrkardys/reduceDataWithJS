@@ -21,7 +21,6 @@ console.log("The sum3 is: " + total3);				//The sum is: 0
 */
 
 /* LESSON 2 */ /* ======================================================================================================
-*/
 var votes = [					//representation of opinion poll "which framework is the best"
   "angular",
   "angular",
@@ -46,4 +45,64 @@ var reducer = function(tally, vote) {
 var result = votes.reduce(reducer, initialValue);
 
 console.log(result);
+//----------------------------------------------------------------------------------------------------------------------
+*/
+
+/* LESSON 3 */ /* ======================================================================================================
+*/
+var data = [1, 2, 3];				//transformation of the array into the array with the same length (mapping)
+
+var doubled = data.reduce(function(acc, value) {
+	acc.push(value * 2);
+	return acc;
+}, []);
+
+var doubleMapped = data.map(function(item) { 
+	return item * 2;
+});
+
+console.log("My doubled data:\t" + doubled);
+console.log("My doubleMapped data:\t" + doubleMapped);
+//----------------------------------------------------------------------------------------------------------------------
+var data2 = [1, 2, 3, 4, 5, 6];		//transformation of the array into the shorter array (filtering)
+
+var evens = data2.reduce(function(acc, value) {
+	if (value % 2 === 0) acc.push(value);
+	return acc;
+}, []);
+
+var evenFiltered = data2.filter(function(item) {
+	return item % 2 === 0;
+});
+
+console.log("My evens data2:\t\t" + evens);
+console.log("My evenFiltered data2:\t" + evenFiltered);
+//----------------------------------------------------------------------------------------------------------------------
+var filterMapped = data2.filter(function(item) {
+	return item % 2 === 0;
+}).map(function(item) {
+	return item * 2;
+});
+
+console.log("My filterMapped data2:\t" + filterMapped);
+//----------------------------------------------------------------------------------------------------------------------
+var bigData = [];
+for (var i = 0; i < 1000000; i++) {
+	bigData[i] = i;
+};
+
+console.time('bigData');
+var filterMappedBigData = bigData.filter(function(item) {
+	return item % 2 === 0;
+}).map(function(item) {
+	return item * 2;
+});
+console.timeEnd('bigData');								//bigData: 17.14ms
+
+console.time('bigDataReduce');
+var reducedBigData = bigData.reduce(function(acc, value) {
+	if (value % 2 === 0) acc.push(value * 2);
+	return acc;
+}, []);
+console.timeEnd('bigDataReduce');						//bigDataReduce: 9.91ms
 //----------------------------------------------------------------------------------------------------------------------
