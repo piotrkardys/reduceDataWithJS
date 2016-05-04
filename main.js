@@ -49,7 +49,6 @@ console.log(result);
 */
 
 /* LESSON 3 */ /* ======================================================================================================
-*/
 var data = [1, 2, 3];				//transformation of the array into the array with the same length (mapping)
 
 var doubled = data.reduce(function(acc, value) {
@@ -105,4 +104,30 @@ var reducedBigData = bigData.reduce(function(acc, value) {
 	return acc;
 }, []);
 console.timeEnd('bigDataReduce');						//bigDataReduce: 9.91ms
+//----------------------------------------------------------------------------------------------------------------------
+*/
+
+/* LESSON 4 */ /* ======================================================================================================
+*/
+var data = [1, 2, 3, 3, 4, 5, 3, 1];
+
+function reducer(accumulator, value) {
+	return accumulator + value;
+};
+
+var sum = data.reduce(reducer, 0);
+console.log('Sum:\t' + sum);
+console.log('Mean:\t' + sum / data.length);
+
+
+function reducer2(accumulator, value, index, array) {		//index - variable contains which element is calculated at the moment
+	var intermediaryValue = accumulator + value;			//array is the array on which we are calling the reduce method
+
+	if (index === array.length - 1) return intermediaryValue / array.length;	//if it is the last item in the array - returns the mean of all elements
+
+	return accumulator + value;													//otherwise returns the sum of the elements
+};
+
+var mean = data.reduce(reducer2, 0);
+console.log('Mean2:\t' + mean);
 //----------------------------------------------------------------------------------------------------------------------
