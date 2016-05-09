@@ -237,7 +237,6 @@ console.log(sum2);									//we get '054321' (0 is the initial value, this is st
 */
 
 /* LESSON 7 */ /* ======================================================================================================
-*/
 function increment(input) { return input + 1; };
 function decrement(input) { return input - 1; };
 function double(input) { return input * 2; };
@@ -264,4 +263,57 @@ var final_value3 = pipeline.reduce(function(acc, fn) {
 	return fn(acc);
 }, initial_value);
 console.log(final_value3);
+//----------------------------------------------------------------------------------------------------------------------
+*/
+
+/* LESSON 8 */ /* ======================================================================================================
+*/
+var luke = { 
+	name: "Luke Skywalker", 
+	jedi: true, 
+	parents: { 
+		father: {
+			jedi: true
+		},
+		mother: {
+			jedi: false
+		}
+	}
+};
+var han = {
+	name: "Han Solo",
+	jedi: false,
+	parents: {
+		father: {
+			jedi: false
+		},
+		mother: {
+			jedi: false
+		}
+	}
+};
+var anakin = {
+	name: "Anakin Skywalker",
+	jedi: true,
+	parents: {
+		mother: {
+			jedi: false
+		}
+	}
+};
+
+var characters = [luke, han, anakin];
+
+function fatherWasJedi(character) {
+	var path = "parents.father.jedi";
+	return path.split(".").reduce(function(obj, field) {		//split method return the array of splitted strings ([parents, father, jedi])
+		if (obj) return obj[field];								//if object exists gets the field
+
+		return false;											//otherwise returns false
+	}, character);
+};
+
+characters.forEach(function(character) {
+	console.log(character.name + "'s father was a jedi:", fatherWasJedi(character));
+});
 //----------------------------------------------------------------------------------------------------------------------

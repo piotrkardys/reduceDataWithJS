@@ -7,3 +7,4 @@
 "09.05.2016 – 9:30 – Lesson5: familiarizing with common mistakes in reducer function, update file main.js" 
 "09.05.2016 – 10:30 – Lesson6: flattening arrays with the reduce method &familiarizing with the reduceRight method, update file main.js" 
 "09.05.2016 – 11:15 – Lesson7: familiarizing with the 'pipeline', update file main.js" 
+"09.05.2016 – 11:50 – Lesson8: safe object inspection using the reduce method, update file main.js" 
