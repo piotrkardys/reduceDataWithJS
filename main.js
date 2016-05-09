@@ -108,7 +108,6 @@ console.timeEnd('bigDataReduce');						//bigDataReduce: 9.91ms
 */
 
 /* LESSON 4 */ /* ======================================================================================================
-*/
 var data = [1, 2, 3, 3, 4, 5, 3, 1];
 
 function reducer(accumulator, value) {
@@ -130,4 +129,35 @@ function reducer2(accumulator, value, index, array) {		//index - variable contai
 
 var mean = data.reduce(reducer2, 0);
 console.log('Mean2:\t' + mean);
+//----------------------------------------------------------------------------------------------------------------------
+*/
+
+/* LESSON 5 */ /* ======================================================================================================
+*/
+var data = [1, 2, 3, 4];
+function reducer(accumulator, value) {
+	return accumulator + value;
+};
+var initialValue = 0;
+var sum = data.reduce(reducer, initialValue);
+console.log(sum);
+
+var sum2 = data.reduce(reducer);				//it's going to work, when we don't pass initialValue the first accumulator
+console.log(sum2);								//value is the first element of the Array 
+//----------------------------------------------------------------------------------------------------------------------
+var data2 = ["vote1", "vote2", "vote1", "vote3"];
+function reducer2(accumulator, value) {
+	if (accumulator[value]) accumulator[value]++;
+	else accumulator[value] = 1;
+
+	return accumulator;							//we need to remember about that accumulator need to be returned
+												//otherwise we get an error
+};
+var tally = data2.reduce(reducer2, {});
+console.log(tally);
+
+var tally2 = data2.reduce(reducer2);			//it doesn't work properly - as an initialValue the function gets the first
+console.log(tally2);							//value (string vote1), which has no fields so the condition in the reducer2
+												//is always false (and the returned accumulator has always value of the first
+												//item in the Array)
 //----------------------------------------------------------------------------------------------------------------------

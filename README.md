@@ -4,3 +4,4 @@
 "04.05.2016 - 09:05 – Lesson2: familiarizing with the reduce method by creating the simple votes counter (opinion poll), update file main.js" 
 "04.05.2016 - 10:15 – Lesson3: familiarizing with the map and filter method, update file main.js" 
 "04.05.2016 - 17:50 – Lesson4: using the reduce method to calculate the mean of the array items, update file main.js" 
+"09.05.2016 – 9:30 – Lesson5: familiarizing with common mistakes in reducer function, update file main.js" 
