@@ -133,7 +133,6 @@ console.log('Mean2:\t' + mean);
 */
 
 /* LESSON 5 */ /* ======================================================================================================
-*/
 var data = [1, 2, 3, 4];
 function reducer(accumulator, value) {
 	return accumulator + value;
@@ -160,4 +159,79 @@ var tally2 = data2.reduce(reducer2);			//it doesn't work properly - as an initia
 console.log(tally2);							//value (string vote1), which has no fields so the condition in the reducer2
 												//is always false (and the returned accumulator has always value of the first
 												//item in the Array)
+//----------------------------------------------------------------------------------------------------------------------
+*/
+
+/* LESSON 6 */ /* ======================================================================================================
+*/
+var data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];			//Array with 3 nasted Arrays with 3 items in each
+var flattenedData = data.reduce(function(acc, value) {	//reduce method returns 'flattenedArray' i.e. 1 Array with 9 items
+	return acc.concat(value);							//concat method adds only each item in the nasted array separately
+}, []);
+console.log(flattenedData);
+//----------------------------------------------------------------------------------------------------------------------
+var input = [											//Array with 3 objects
+  { title: "Batman Begins",
+    year: 2005,
+    cast: [
+      "Christian Bale",
+      "Michael Caine",
+      "Liam Neeson",
+      "Katie Holmes",
+      "Gary Oldman",
+      "Cillian Murphy"
+    ]
+  },
+  { title: "The Dark Knight",
+    year: 2008,
+    cast: [
+      "Christian Bale",
+      "Heath Ledger",
+      "Aaron Eckhart",
+      "Michael Caine",
+      "Maggie Gyllenhal",
+      "Gary Oldman",
+      "Morgan Freeman"
+    ]
+  },
+  { title: "The Dark Knight Rises",
+    year: 2012,
+    cast: [
+      "Christian Bale",
+      "Gary Oldman",
+      "Tom Hardy",
+      "Joseph Gordon-Levitt",
+      "Anne Hathaway",
+      "Marion Cotillard",
+      "Morgan Freeman",
+      "Michael Caine"
+    ]
+  }
+];
+
+var stars = input.reduce(function(acc, value) {		//we want to get every actor from that 3 movies only once
+//	return acc.concat(value.cast);					//it returns three flattened arrays (and that's why we have for example
+													//item "Christian Bale" 3 times)
+	value.cast.forEach(function(star) {
+		if (acc.indexOf(star) === -1) acc.push(star);	//if there is no item in the array, the indexOf method returns
+	});													//value equal to -1
+
+	return acc;
+}, []);
+console.log(stars);
+//----------------------------------------------------------------------------------------------------------------------
+var data2 = [1, 2, 3, 4, "5"];
+
+var sum = data2.reduce(function(acc, value, index) {//reduce method reduces data from left (index: 0) to right (index: length - 1)
+	console.log(index);
+	return acc + value;
+}, 0);
+console.log(sum);									//we get '105' (10 is the sum of the 1, 2, 3, 4 and then it adds
+													//a string to that sum)
+
+var sum2 = data2.reduceRight(function(acc, value, index) {
+	console.log(index);
+	return acc + value;
+}, 0);
+console.log(sum2);									//we get '054321' (0 is the initial value, this is string adding)
 //----------------------------------------------------------------------------------------------------------------------
