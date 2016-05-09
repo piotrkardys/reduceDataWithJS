@@ -163,7 +163,6 @@ console.log(tally2);							//value (string vote1), which has no fields so the co
 */
 
 /* LESSON 6 */ /* ======================================================================================================
-*/
 var data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];			//Array with 3 nasted Arrays with 3 items in each
 var flattenedData = data.reduce(function(acc, value) {	//reduce method returns 'flattenedArray' i.e. 1 Array with 9 items
 	return acc.concat(value);							//concat method adds only each item in the nasted array separately
@@ -234,4 +233,35 @@ var sum2 = data2.reduceRight(function(acc, value, index) {
 	return acc + value;
 }, 0);
 console.log(sum2);									//we get '054321' (0 is the initial value, this is string adding)
+//----------------------------------------------------------------------------------------------------------------------
+*/
+
+/* LESSON 7 */ /* ======================================================================================================
+*/
+function increment(input) { return input + 1; };
+function decrement(input) { return input - 1; };
+function double(input) { return input * 2; };
+function halve(input) { return input / 2; };
+
+var initial_value = 1;
+//TASK: increment value then double it and then decrement that value
+var incremented_value = increment(initial_value);
+var doubled_value = double(incremented_value);
+var final_value = decrement(doubled_value);
+console.log(final_value);									//not recommended
+
+
+function transform(input) { return ((input + 1) * 2) - 1; };
+
+var final_value2 = transform(initial_value);
+console.log(final_value2);									//we can do that way, but why if we already have functions
+															//to do the same things
+
+
+var pipeline = [increment, double, decrement];				//pipeline - series of functions into which we set initial
+															//			 value and we get some final value
+var final_value3 = pipeline.reduce(function(acc, fn) {
+	return fn(acc);
+}, initial_value);
+console.log(final_value3);
 //----------------------------------------------------------------------------------------------------------------------
